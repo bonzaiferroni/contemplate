@@ -21,4 +21,4 @@ val dbTables = listOf(
 
 //CREATE DATABASE example_db;
 //CREATE USER example_user WITH PASSWORD 'hunter2';
-//GRANT ALL PRIVILEGES ON DATABASE example_db TO example_user;
+//ALTER DATABASE example_db OWNER TO example_user;
