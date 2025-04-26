@@ -14,6 +14,11 @@ fun Routing.serveExamples(service: ExampleApiService = ExampleApiService()) {
     }
 
     authenticateJwt {
+        get(Api.Examples.User) {
+            val userId = call.getUserId()
+            service.readUserExamples(userId)
+        }
+
         post(Api.Examples.Create) { newExample, endpoint ->
             val userId = call.getUserId()
             service.createExample(userId, newExample)
