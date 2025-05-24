@@ -25,7 +25,7 @@ class ExampleListModel(
         if (!stateNow.isValidNewItem) return
         viewModelScope.launch {
             val exampleId = store.createExample(NewExample(
-                symtrix = stateNow.newSymtrix
+                label = stateNow.newSymtrix
             ))
             if (exampleId > 0) {
                 refreshItems()

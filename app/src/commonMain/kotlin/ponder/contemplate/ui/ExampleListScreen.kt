@@ -30,7 +30,7 @@ fun ExampleListScreen(
                 Row(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(it.symtrix)
+                    Text(it.label)
                     Controls {
                         Button("Delete", background = Pond.colors.secondary, onClick = { viewModel.deleteItem(it) })
                         RouteButton("View") { ExampleProfileRoute(it.id) }
