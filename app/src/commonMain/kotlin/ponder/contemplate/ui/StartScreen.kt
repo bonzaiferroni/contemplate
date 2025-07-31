@@ -17,9 +17,10 @@ import org.jetbrains.compose.resources.painterResource
 import ponder.contemplate.Greeting
 import ponder.contemplate.HelloRoute
 import pondui.ui.controls.Button
+import pondui.ui.controls.Column
 import pondui.ui.controls.RouteButton
+import pondui.ui.controls.Scaffold
 import pondui.ui.controls.Text
-import pondui.ui.nav.Scaffold
 import pondui.ui.theme.Pond
 
 @Composable
@@ -27,9 +28,9 @@ fun StartScreen() {
     Scaffold {
         var showContent by remember { mutableStateOf(false) }
         Column(
+            spacingUnits = 1,
             modifier = Modifier.fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Pond.ruler.columnGrouped
         ) {
             RouteButton("Go to Hello") { HelloRoute }
             Button(onClick = { showContent = !showContent }) {

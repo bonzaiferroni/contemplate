@@ -8,21 +8,21 @@ import androidx.compose.ui.Alignment
 import androidx.lifecycle.viewmodel.compose.viewModel
 import ponder.contemplate.ExampleProfileRoute
 import pondui.ui.controls.Button
-import pondui.ui.controls.Controls
 import pondui.ui.controls.RouteButton
+import pondui.ui.controls.Row
+import pondui.ui.controls.Scaffold
 import pondui.ui.controls.Text
 import pondui.ui.controls.TextField
-import pondui.ui.nav.Scaffold
 import pondui.ui.theme.Pond
 
 @Composable
 fun ExampleListScreen(
     viewModel: ExampleListModel = viewModel { ExampleListModel() }
 ) {
-    val state by viewModel.state.collectAsState()
+    val state by viewModel.stateFlow.collectAsState()
     Scaffold {
-        Controls {
-            TextField(state.newSymtrix, viewModel::setSymtrix)
+        Row(1) {
+            TextField(state.newSymtrix, onTextChanged = viewModel::setSymtrix)
             Button("Add", onClick = viewModel::createNewItem)
         }
         LazyColumn {
@@ -31,8 +31,8 @@ fun ExampleListScreen(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(it.label)
-                    Controls {
-                        Button("Delete", background = Pond.colors.secondary, onClick = { viewModel.deleteItem(it) })
+                    Row(1) {
+                        Button("Delete", background = Pond.colors.negation, onClick = { viewModel.deleteItem(it) })
                         RouteButton("View") { ExampleProfileRoute(it.id) }
                     }
                 }

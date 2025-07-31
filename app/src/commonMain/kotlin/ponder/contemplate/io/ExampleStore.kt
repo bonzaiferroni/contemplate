@@ -3,9 +3,10 @@ package ponder.contemplate.io
 import ponder.contemplate.model.Api
 import ponder.contemplate.model.data.Example
 import ponder.contemplate.model.data.NewExample
-import pondui.io.ApiStore
+import pondui.io.ApiClient
+import pondui.io.globalApiClient
 
-class ExampleStore: ApiStore() {
+class ExampleStore(val client: ApiClient = globalApiClient) {
     suspend fun readExample(exampleId: Long) = client.get(Api.Examples, exampleId)
     suspend fun readUserExamples() = client.get(Api.Examples.User)
     suspend fun createExample(newExample: NewExample) = client.post(Api.Examples.Create, newExample)
