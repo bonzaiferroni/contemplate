@@ -5,13 +5,13 @@ import kotlinx.coroutines.launch
 import ponder.contemplate.io.ExampleStore
 import ponder.contemplate.model.data.Example
 import ponder.contemplate.model.data.NewExample
+import pondui.ui.core.ModelState
 import pondui.ui.core.StateModel
-import pondui.ui.core.ViewState
 
 class ExampleListModel(
     private val store: ExampleStore = ExampleStore(),
 ): StateModel<ExampleListState>() {
-    override val state = ViewState(ExampleListState())
+    override val state = ModelState(ExampleListState())
 
     init {
         refreshItems()

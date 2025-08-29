@@ -5,15 +5,15 @@ import kotlinx.coroutines.launch
 import ponder.contemplate.ExampleProfileRoute
 import ponder.contemplate.io.ExampleStore
 import ponder.contemplate.model.data.Example
+import pondui.ui.core.ModelState
 import pondui.ui.core.StateModel
-import pondui.ui.core.ViewState
 
 class ExampleProfileModel(
     route: ExampleProfileRoute,
     private val store: ExampleStore = ExampleStore()
 ): StateModel<ExampleProfileState>() {
 
-    override val state = ViewState(ExampleProfileState())
+    override val state = ModelState(ExampleProfileState())
 
     init {
         viewModelScope.launch {
